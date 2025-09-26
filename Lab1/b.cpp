@@ -1,36 +1,29 @@
 #include <iostream>
 #include <vector>
-#include <stack>
 using namespace std;
 
-int main() {
+int main(){
     int n;
     cin >> n;
-
-    vector<long long> ages(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> ages[i];
+    vector<int> arr(n);
+    bool flag;
+    for(int i = 0;i < n;i++){
+        cin >> arr[i];
     }
+    cout << -1 << " ";
 
-    stack<long long> stk;
-    vector<long long> result(n);
-
-    for (int i = 0; i < n; ++i) {
-        while (!stk.empty() && stk.top() >= ages[i]) {
-            stk.pop();
+    for(int i = 1;i < n;i++){
+        flag = true;
+        for(int j = i-1;j >= 0;j--){
+            if(arr[j] <= arr[i]){
+                cout << arr[j] << " ";
+                flag = false;
+                break;
+            }
         }
-
-        if (stk.empty()) {
-            result[i] = -1;
-        } else {
-            result[i] = stk.top();
+        if(flag){
+            cout << -1 << " ";
         }
-
-        stk.push(ages[i]);
-    }
-
-    for (int i = 0; i < n; ++i) {
-        if (i > 0) cout << " ";
-        cout << result[i];
+        
     }
 }

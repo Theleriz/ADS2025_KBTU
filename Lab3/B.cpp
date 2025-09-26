@@ -1,14 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <climits>
+#define ll long long
 using namespace std;
 
-bool canPartition(vector<long long>& a, int k, long long maxSum) {
+bool solve(vector<ll>& arr, int k, ll maxSum) {
     int blocks = 1;
     long long currentSum = 0;
 
-    for (long long x : a) {
+    for (int i = 0; i < arr.size(); i++) {
+        long long x = arr[i];
         if (x > maxSum) return false;
 
         if (currentSum + x <= maxSum) {
@@ -27,24 +28,24 @@ int main() {
     int n, k;
     cin >> n >> k;
 
-    vector<long long> a(n);
-    long long total = 0;
-    long long maxVal = 0;
+    vector<ll> arr(n);
+    ll total = 0;
+    ll maxVal = 0;
 
     for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-        total += a[i];
-        maxVal = max(maxVal, a[i]);
+        cin >> arr[i];
+        total += arr[i];
+        maxVal = max(maxVal, arr[i]);
     }
 
-    long long low = maxVal;
-    long long high = total;
-    long long ans = total;
+    ll low = maxVal;
+    ll high = total;
+    ll ans = total;
 
     while (low <= high) {
-        long long mid = low + (high - low) / 2;
+        ll mid = low + (high - low) / 2;
 
-        if (canPartition(a, k, mid)) {
+        if (solve(arr, k, mid)) {
             ans = mid;
             high = mid - 1;
         } else {
@@ -52,7 +53,5 @@ int main() {
         }
     }
 
-    cout << ans << endl;
-
-    return 0;
+    cout << ans;
 }
