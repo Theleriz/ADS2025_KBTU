@@ -1,25 +1,33 @@
 #include <iostream>
-#include <vector>
 #include <list>
+
 using namespace std;
 
-int main() {
-    int pos;
-    vector<int> arr(1000, -1);
-    while (cin >> pos){
-        int data; cin >> data; arr[pos] = data;
-    }
+int main () {
+
+    int n;
+    cin >> n;
+
     list<int> lst;
+
+    for(int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        lst.push_back(x);
+    }
+
     
-    for(int i = 0; i < 1000; i++){
-        if(arr[i]!= -1){
-            lst.push_back(arr[i]);
-        }
+    int number, pos;
+    cin >> number >> pos;
+
+
+    if(pos <= lst.size()) {
+        auto head = lst.begin();
+        advance(head, pos);
+        lst.insert(head, number);
     }
 
-    for(int item : lst){
+     for(int item : lst){
         cout << item << " ";
-    }
-
-
+     } 
 }
