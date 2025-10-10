@@ -85,6 +85,5 @@ int main() {
     cin >> X;
     
     cout << tree.getSubtreeSize(X) << endl;
-    
-    return 0;
+
 }

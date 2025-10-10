@@ -24,8 +24,6 @@ public:
         root = insertRecursive(root, val);
     }
 
-private:
-    // Вспомогательный рекурсивный метод
     Node* insertRecursive(Node* node, int val) {
         if (node == nullptr) {
             return new Node(val);

@@ -3,14 +3,15 @@
 #include <queue>
 using namespace std;
 
-struct Node {
+class Node {
+public:
     int data;
     Node* left;
     Node* right;
     int level;
     
     Node(int val) {
-        data = val;
+        this->data = val;
         left = right = nullptr;
         level = 0;
     }
