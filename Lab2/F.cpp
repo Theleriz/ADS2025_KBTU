@@ -25,8 +25,12 @@ int main () {
         advance(head, pos);
         lst.insert(head, number);
     }
+    if(pos > lst.size()){
+        auto tail = lst.end();
+        lst.insert(tail, number);
+    }
 
-     for(int item : lst){
+    for(int item : lst){
         cout << item << " ";
-     } 
+    }
 }

@@ -2,12 +2,16 @@
 #include <algorithm>
 using namespace std;
 
-struct Node {
+class Node {
+public:
     int data;
     Node* left;
     Node* right;
-    
-    Node(int val) : data(val), left(nullptr), right(nullptr) {}
+
+    Node(int val){
+        this->data = val;
+        left = right = nullptr;
+    }
 };
 
 class BST {

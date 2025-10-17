@@ -74,14 +74,20 @@ class LinkedList {
         int currentIndex = 0;
         auto currentNode = front;
         auto prevHeadCopy = front;
+        auto postTail = front;
         while (currentIndex != k)
         {
+            if(currentIndex == k - 1){
+                postTail = currentNode;
+            }
             currentNode = currentNode->next;
             currentIndex++;
         }
         
         this->front = currentNode;
         this->tail->next = prevHeadCopy;
+        tail = postTail;
+        
     }
 
 };
@@ -105,4 +111,7 @@ int main(){
         cout << tmp << " ";
         currenNode = currenNode->next;
     }
+    cout << endl;
+    auto s = lst.tail->getData();
+    cout << s;
 }
