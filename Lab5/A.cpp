@@ -17,7 +17,6 @@ int main() {
     }
     
     
-    
     while (minHeap.size() > 1) {
         long long first = minHeap.top();
         minHeap.pop();
