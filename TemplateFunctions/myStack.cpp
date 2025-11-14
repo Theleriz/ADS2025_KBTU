@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std;
 
+template <typename T>
 class Node {
 public:
-    int data;
+    T data;
     Node* next;
     
     Node() {
@@ -15,6 +16,7 @@ public:
     }
 };
 
+template <typename T>
 class Stack{
 public:
     Node *top;

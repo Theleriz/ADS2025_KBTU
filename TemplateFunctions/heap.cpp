@@ -1,8 +1,9 @@
 #include <vector>
 
+template <typename T>
 class heap{
 public:
-    std::vector<int> heap;
+    std::vector<T> heap;
     int parent(int i){
         return (i-1) / 2;
     }
