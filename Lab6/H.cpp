@@ -1,42 +1,48 @@
 #include <iostream>
+#include <vector>
 #include <string>
+
 using namespace std;
 
-void merge(pair<char, int> arr[], int l, int m, int r) {
-    
+int partition(vector<char>& arr, int low, int high) {
+    char pivot = arr[high];
+    int i = low - 1;
+    for (int j = low; j < high; ++j) {
+        if (arr[j] < pivot) {
+            ++i;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return i + 1;
 }
 
-void mergeSort(pair<char, int> arr[], int l, int r) {
-    if (l < r) {
-        int m = l + (r - l) / 2;
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-        merge(arr, l, m, r);
+void quickSort(vector<char>& arr, int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
     }
 }
 
 int main() {
     int n;
+    char target;
     cin >> n;
-    string s;
-    cin >> s;
-    
-    int cnt[26] = {0};
-    for (char c : s) {
-        cnt[c - 'a']++;
-    }
-    
-    pair<char, int> arr[26];
-    int size = 0;
-    
-    for (int i = 0; i < 26; i++) {
-        if (cnt[i] > 0) {
-            arr[size++] = {char('a' + i), cnt[i]};
+    vector<char> arr(n);
+    for (int i = 0; i < n; ++i)
+        cin >> arr[i];
+    cin >> target;
+
+    quickSort(arr, 0, n - 1);
+
+    for (char c : arr) {
+        if (c > target) {
+            cout << c << "\n";
+            return 0;
         }
     }
-    
-    mergeSort(arr, 0, size - 1);
-    
-    cout << arr[0].first;
 
+    cout << arr[0] << "\n";
+    return 0;
 }
